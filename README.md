@@ -11,6 +11,14 @@ chmod u+x ./GCC_Installation
   and then invoke the executable
 
 ./GCC_Installation
+
+i.e. for for a Linux  or a Mac executable with Intel compiler 
+First step make the script executable using
+chmod u+x ./INTEK_Installation
+
+  and then invoke the executable
+
+./INTEL_Installation
 ```
 ##
 
