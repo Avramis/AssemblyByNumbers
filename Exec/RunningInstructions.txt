@@ -1,0 +1,45 @@
+#############################################################
+#                                                           #
+#                            ASBN                           #
+#.                    AssemblyByNumbers                     #
+#                                                           #
+#############################################################
+> Usage:
+> Parameters:
+Parameters:
+-fq [string]                                 -- (Required parameter) fastq file directory and file name
+
+-fo [string]                                 -- (Optional parameter) output directory to save the consensus contigs fasta file. If not provided the fasta file is save in the same as the fastq file directory with the name Contigs.fasta.
+-so [string]                                 -- (Optional parameter) output directory to save the sam file with the sequences overlap alignment sam file. If not provided the sam file is save in the same as the fastq file directory with the name Alignment.sam
+-ovlp [integer]                              -- (Optional parameter) overlap size to use for the analysis [default: 100]
+
+-rep [string]                                -- (Optional parameter) Provide the representation method to use for converting nucleotide sequences to numerical sequences [default: Tetrahedron]
+Options:
+01) Atomic_Numbers
+02) Complex_Numbers
+03) Dna_Walk
+04) EIIP_numbers
+05) Integer_numbers
+06) Pair_numbers
+07) Real_numbers
+08) Tetrahedron             -- default option
+09) Voss_indicators10) Z_curve
+
+-tra [string]                                -- (Optional parameter) Provide the transformation method to use for compressing data to a lower dimensional space [default: DWT]
+Options:
+01) DFT 
+02) DWT                     -- default option
+03) PAA
+
+-clvl [integer]                              -- (Optional parameter) compression level to use for the analysis [default: 4]
+
+-knn [integer]                               -- (Optional parameter)the number of knn neighbour data to use for the KNN search [default: 5]
+
+-bin [true/false]                            -- (Optional parameter) Preprocess data and bin them to groups. Reads in each bin is assemble to contigs and then all contigs are re assembled. Proposed for big dataset. [default: false]
+-binmet [int (1 or 2)]                       -- (Optional parameter) if bin is true then binning method will be selected. 1 indicate a faster binning approach and 2 a more accurate clustering approach. [default: 1]
+
+-sen [double]                                -- (Optional parameter) Sensitivity level for matching overlaps based on their to use when aligning reads with smith waterman alignment score. Value must be between -2 and 2. A low value will result in higher sensitivity and higher specificity matching. [default: 1.0]-ssi [true/false]                            -- (Optional parameter) Incrementally make matching process more sensitive [default: false]
+-siv [double]                                -- (Optional parameter) Value to use to increment matching sensitivity level [default: 0.5]
+Example:./AssemblyByumbers -fq ./metagenomic.fastq
+./AssemblyByumbers -fq ./metagenomic.fastq -so ./Results/OVLASEMBLY.sam -fo ./Results/CONTIGS.fasta -ovlp 300 -rep Voss_indicators -tra DFT -clvl 6 -knn 3
+./AssemblyByumbers -fq ./metagenomic.fastq -so ./Results/OVLASEMBLY.sam -fo ./Results/CONTIGS.fasta -ovlp 300 -rep Voss_indicators -tra DFT -clvl 6 -knn 3 -p true
